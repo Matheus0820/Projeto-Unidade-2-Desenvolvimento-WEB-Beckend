@@ -32,3 +32,66 @@ Fazer o CRUD de Colaboradores, Frota e Clientes a serem atendidos e Usuários
 - Nível de acesso (Colaborador, Gestor)
     - Colaborador: Acesso aos clientes a serem atendidos - Só implementado na próxima unidade
     - Gestor: Acesso total - Só implementado na próxima unidade
+
+
+## Rotas
+
+### Rota base
+- `.../api/`
+
+### Colaboradores
+- `.../api/colaboradores` - Rota base
+    - **GET:** Retorna todos os colaboradores;
+
+    - **POST:** Cria um novo colaborador passando os dados necessários no corpo do POST.
+
+
+- `.../api/colaboradores/id`
+    - **PUT:** Modifica dados por inteiro do colaborador com **ID** passado;
+
+    - **PATCH:** Modifica pelo menos um dado do colaborador com **ID** passado;
+
+    - **DELETE:** Remove da base de dados o colaborador com **ID** passado.
+
+
+### Frota:
+- `.../api/frota` - Rota base
+    - **GET:** Retorna todos os veiculos cadastrados;
+
+    - **POST:** Cria um novo veículo passando os dados necessários no corpo do POST.
+
+
+- `.../api/frota/id`
+    - **PUT:** Modifica dados por inteiro do veículo com **ID** passado;
+
+    - **PATCH:** Modifica pelo menos um dado do veículo com **ID** passado;
+
+    - **DELETE:** Remove da base de dados o veículo com **ID** passado.
+
+
+### Clientes
+- `.../api/clientes` - Rota base
+    - **GET:** Retorna todos os clientes cadastrados;
+
+    - **POST:** Cria um novo cliente passando os dados necessários no corpo do POST.
+
+- `.../api/clientes/id`
+    - **PUT:** Modifica dados por inteiro do cliente com **ID** passado;
+
+    - **PATCH:** Modifica pelo menos um dado do cliente com **ID** passado;
+
+    - **DELETE:** Remove da base de dados o cliente com **ID** passado.
+
+
+### Usuários
+- `.../api/usuarios` - Rota base
+    - **GET:** Retorna todos os usuários cadastrados;
+
+    - **POST:** Cria um novo usuário passando os dados necessários no corpo do POST.
+
+- `.../api/usuarios/id`
+    - **PUT:** Modifica dados por inteiro do usuário com **ID** passado;
+
+    - **PATCH:** Modifica pelo menos um dado do usuário com **ID** passado;
+
+    - **DELETE:** Remove da base de dados o usuário com **ID** passado.
