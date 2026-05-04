@@ -3,8 +3,8 @@ import {
     listarColaborador, criarColaborador,
     buscarColaboradorID, putColaborador,
     patchColaborador, deletarColaborador
-} from '../controllers/controllerColaboradores.js';
-import { validatorColaborador } from '../validators/validatorColaborador.js';
+} from '../controllers/colaboradores.controller.js';
+import { validatorColaborador } from '../validators/colaborador.validator.js'
 
 const router = Router();
 

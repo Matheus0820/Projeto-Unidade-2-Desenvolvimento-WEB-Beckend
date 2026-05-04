@@ -3,8 +3,8 @@ import {
     listarUsuarios, criarUsuarios,
     buscarUsuariosID, putUsuarios,
     patchUsuarios, deletarUsuarios
-} from '../controllers/controllerUsuarios.js';
-import { validatorUsuarios } from '../validators/validatorUsuarios.js';
+} from '../controllers/usuarios.controller.js';
+import { validatorUsuarios } from '../validators/usuarios.validator.js';
 
 const router = Router();
 

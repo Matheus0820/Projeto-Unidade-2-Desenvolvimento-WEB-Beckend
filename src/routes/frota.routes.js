@@ -4,7 +4,7 @@ import {
     buscarFrotaID, putFrota,
     patchFrota, deletarFrota
 } from '../controllers/controllerFrotas.js';
-import { validatorFrota } from '../validators/validatorFrota.js';
+import { validatorFrota } from '../validators/frota.entidades.js';
 
 const router = Router();
 

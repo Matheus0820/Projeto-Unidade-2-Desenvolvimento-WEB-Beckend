@@ -3,8 +3,8 @@ import {
     listarClientes, criarClientes,
     buscarClientesID, putClientes,
     patchClientes, deletarClientes
-} from '../controllers/controllerClientes.js';
-import { validatorClientes } from '../validators/validatorClientes.js';
+} from '../controllers/clientes.controller.js';
+import { validatorClientes } from '../validators/clientes.validator.js'
 
 const router = Router();
 
