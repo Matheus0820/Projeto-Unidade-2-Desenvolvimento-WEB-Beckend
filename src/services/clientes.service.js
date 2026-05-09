@@ -5,13 +5,13 @@ class ClienteService {
     static async findAll() {
         const clientes = await ClienteRepository.findAll();
         
-        const clientesDto = clientes.map(cliente => new ClienteDto(cliente));
+        const clientesDto = await clientes.map(cliente => new ClienteDto(cliente));
         return clientesDto;
     }
 
     static async findById(id) {
         // Verificando se cliente existe
-        const cliente = ClienteRepository.findById(id);
+        const cliente = await ClienteRepository.findById(id);
 
         if(!cliente) {
             return new Error('Cliente com ID informado não existe.');
@@ -26,41 +26,41 @@ class ClienteService {
         return new ClienteDto(newClienteFromDb)
     }
 
-    static async put(clienteData) {
-        const clienteSalvo = ClienteRepository.findById(clienteData.id);
+    static async put(clienteData, id) {
+        const clienteSalvo = await ClienteRepository.findById(id);
 
         if(!clienteSalvo) {
             return new Error('Cliente com ID informado não existe.');
         }
 
-        clienteUpdateDb = await ClienteRepository.update(clienteData);
+        const clienteUpdateDb = await ClienteRepository.update(clienteData, id);
         
         return new ClienteDto(clienteUpdateDb);
     }
 
-    static async patch(clienteData) {
+    static async patch(clienteData, id) {
 
-        const clienteSalvo = ClienteRepository.findById(clienteData.id);
+        const clienteSalvo = await ClienteRepository.findById(id);
 
         if(!clienteSalvo) {
             return new Error('Cliente com ID informado não existe.');
         }
 
         // Fazendo o update
-        const clienteUpdateDb = await ClienteRepository.update(clienteData);
+        const clienteUpdateDb = await ClienteRepository.update(clienteData, id);
 
         return new ClienteDto(clienteUpdateDb);
     }
 
     static async delete(id) {
-        const clienteDelete = ClienteRepository.findById(id);
+        const clienteDelete = await ClienteRepository.findById(id);
 
         if(!clienteDelete) {
             return new Error('Cliente com ID informado não existe.')
         }
 
         // Removendo cliente
-        ClienteRepository.delete(id);
+        await ClienteRepository.delete(id);
 
         return new ClienteDto(clienteDelete);
     }

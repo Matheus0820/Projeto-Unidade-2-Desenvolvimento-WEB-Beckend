@@ -15,8 +15,8 @@ class ClienteController {
 
     static async findById(req, res, next) {
         try {
-            const id = req.params;
-            const clienteDto = await ClienteService.findById(id)
+            const id = req.params.id;
+            const clienteDto = await ClienteService.findById(id);
 
             res.status(200).json(clienteDto)
 
@@ -40,7 +40,9 @@ class ClienteController {
     static async put(req, res, next) {
         try {
             const clienteData = req.body;
-            const putClienteDto = await ClienteService.put(clienteData);
+            const id = req.params.id;
+
+            const putClienteDto = await ClienteService.put(clienteData, id);
 
             res.status(200).json(putClienteDto);
 
@@ -52,7 +54,8 @@ class ClienteController {
     static async patch(req, res, next) {
         try {
             const clienteData = req.body;
-            const patchClienteDto = await ClienteService.patch(clienteData);
+            const id = req.params.id;
+            const patchClienteDto = await ClienteService.patch(clienteData, id);
 
             res.status(200).json(patchClienteDto);
 
@@ -64,7 +67,7 @@ class ClienteController {
     static async delete(req, res, next) {
         try {
             const id = req.params;
-            const deleteClienteDto = ClienteService.delete(id);
+            const deleteClienteDto = await ClienteService.delete(id);
 
             res.status(200).json(deleteClienteDto);
 

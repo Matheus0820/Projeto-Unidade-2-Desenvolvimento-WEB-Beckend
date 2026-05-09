@@ -4,8 +4,14 @@
   "clientes": [
     {
       "id": "deb79176-727e-486a-951a-6552bf7df632",
-      "nome": "José",
-      "tipoServico": "Instalação",
+      "nome": "José Manuel",
+      "tipoServico": "Manutenção",
+      "urlMaps": "https://maps.app.goo.gl/U5qHXzbL9YicqC2dA"
+    },
+    {
+      "id": "d8778eb5-4109-453c-8929-4758d9579948",
+      "nome": "Maria",
+      "tipoServico": "Manutenção",
       "urlMaps": "https://maps.app.goo.gl/U5qHXzbL9YicqC2dA"
     }
   ],

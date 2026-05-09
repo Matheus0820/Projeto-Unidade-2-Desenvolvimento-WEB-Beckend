@@ -12,7 +12,7 @@ class ClienteRepository {
     static async findById(id) {
         db.read();
 
-        const cliente = db.data.clientes.find(cliente => cliente.id === id);
+        const cliente = await db.data.clientes.find(cliente => cliente.id === id);
         return cliente;
     }
 
@@ -33,10 +33,10 @@ class ClienteRepository {
         return newCliente;
     }
 
-    static async update(clienteData) {
+    static async update(clienteData, id) {
         db.read();
 
-        const cliente = db.data.clientes.find(cliente => cliente.id === clienteData.id);
+        const cliente = await db.data.clientes.find(cliente => cliente.id === id);
 
         // Fazendo o update
         cliente.nome = clienteData.nome;
@@ -52,7 +52,7 @@ class ClienteRepository {
     static async delete(id) {
         db.read();
 
-        const indexCliente = db.data.clientes.findIndex(cliente => cliente.id === id)
+        const indexCliente = await db.data.clientes.findIndex(cliente => cliente.id === id)
         db.data.cliente.splice(indexCliente, 1)
         await db.write();
     }
