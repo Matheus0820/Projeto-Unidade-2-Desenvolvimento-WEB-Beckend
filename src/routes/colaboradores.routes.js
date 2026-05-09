@@ -1,18 +1,15 @@
 import { Router } from 'express';
-import {
-    listarColaborador, criarColaborador,
-    buscarColaboradorID, putColaborador,
-    patchColaborador, deletarColaborador
-} from '../controllers/colaboradores.controller.js';
-import validatorColaborador from '../validators/colaborador.validator.js'
+import ColaboradorController from '../controllers/colaboradores.controller.js';
+import validatorColaboradores from '../validators/colaboradores.validator.js';
+import verificarErros from '../middlewares/validator.middleware.js';
 
 const router = Router();
 
-router.get('/', listarColaborador);
-router.post('/', validatorColaborador, criarColaborador);
-router.get('/:id', buscarColaboradorID);
-router.put('/:id', validatorColaborador, putColaborador);
-router.patch('/:id', validatorColaborador, patchColaborador);
-router.delete('/:id', deletarColaborador);
+router.get('/', ColaboradorController.findAll);
+router.post('/', validatorColaboradores, verificarErros, ColaboradorController.create);
+router.get('/:id', ColaboradorController.findById);
+router.put('/:id', validatorColaboradores, verificarErros, ColaboradorController.put);
+router.patch('/:id', validatorColaboradores, verificarErros, ColaboradorController.patch);
+router.delete('/:id', ColaboradorController.delete);
 
-export default router; 
+export default router;

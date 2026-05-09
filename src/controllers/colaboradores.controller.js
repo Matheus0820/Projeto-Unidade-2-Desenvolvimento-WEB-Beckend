@@ -1,32 +1,74 @@
-// Importando Dados
-import db from '../config/database.js';
+import ColaboradorService from '../services/colaboradores.service.js';
 
-// Listar colaboradores
-export const listarColaborador = (req, res) => {
-    res.status(200).json(db.data.colaboradores)
-};
+class ColaboradorController {
+    static async findAll(req, res, next) {
+        try {
+            const colaboradoresDto = await ColaboradorService.findAll();
 
-// Criar Colaborador
-export const criarColaborador = async (req, res) => {
-    return;
-};
+            res.status(200).json(colaboradoresDto);
+        } catch (error) {
+            next(error);
+        }
+    }
 
-// Buscar Colaborador por ID
-export const buscarColaboradorID = (req, res) => {
-    return;
-};
+    static async findById(req, res, next) {
+        try {
+            const id = req.params.id;
+            const colaboradorDto = await ColaboradorService.findById(id);
 
-// PUT Colaborador - Modificar todos os dados de um colaborador
-export const putColaborador = async (req, res) => {
-    return;
-};
+            res.status(200).json(colaboradorDto);
+        } catch (error) {
+            next(error);
+        }
+    }
 
-// PATCH Colaborador - Modificar pelo menos um dados do colaboraodor
-export const patchColaborador = async (req, res) => {
-    return;
-};
+    static async create(req, res, next) {
+        try {
+            const colaboradorData = req.body;
+            const newColaboradorDto = await ColaboradorService.create(colaboradorData);
 
-// Remover Colaborador
-export const deletarColaborador = async (req, res) => {
-    return;
-};
+            res.status(201).json(newColaboradorDto);
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    static async put(req, res, next) {
+        try {
+            const colaboradorData = req.body;
+            const id = req.params.id;
+
+            const putColaboradorDto = await ColaboradorService.put(colaboradorData, id);
+
+            res.status(200).json(putColaboradorDto);
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    static async patch(req, res, next) {
+        try {
+            const colaboradorData = req.body;
+            const id = req.params.id;
+
+            const patchColaboradorDto = await ColaboradorService.patch(colaboradorData, id);
+
+            res.status(200).json(patchColaboradorDto);
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    static async delete(req, res, next) {
+        try {
+            const id = req.params.id;
+            const deleteColaboradorDto = await ColaboradorService.delete(id);
+
+            res.status(200).json(deleteColaboradorDto);
+        } catch (error) {
+            next(error);
+        }
+    }
+}
+
+export default ColaboradorController;
