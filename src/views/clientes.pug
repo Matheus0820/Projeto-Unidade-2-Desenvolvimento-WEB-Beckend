@@ -1,0 +1,18 @@
+//- Informa que este template estende o layout principal
+extends layouts/main.pug
+//- Define o conteúdo que será injetado no 'block content' do layout
+block content
+    h1 Lista de Clientes Cadastrados
+
+    if clientes.length > 0
+        each cliente in clientes
+            div.pet-card
+            h3= cliente.nome
+            p
+                strong Tipo de Serviço:
+                span= cliente.tipoServico
+            p
+                strong URL do Google Maps:
+                span= cliente.urlMaps
+    else
+        p Nenhum Cliente cadastrado no momento.

@@ -1,18 +1,16 @@
 import { Router } from 'express';
-import {
-    listarClientes, criarClientes,
-    buscarClientesID, putClientes,
-    patchClientes, deletarClientes
-} from '../controllers/clientes.controller.js';
-import { validatorClientes } from '../validators/clientes.validator.js'
+import ClienteController from '../controllers/clientes.controller.js';
+import validatorClientes from '../validators/clientes.validator.js';
+import verificarErros from '../middlewares/validator.middleware.js';
+
 
 const router = Router();
 
-router.get('/', listarClientes);
-router.post('/', validatorClientes, criarClientes);
-router.get('/:id', buscarClientesID);
-router.put('/:id', validatorClientes, putClientes);
-router.patch('/:id', validatorClientes, patchClientes);
-router.delete('/:id', deletarClientes);
+router.get('/', ClienteController.findAll);
+router.post('/', validatorClientes, verificarErros, ClienteController.create);
+router.get('/:id', ClienteController.findById);
+router.put('/:id', validatorClientes, verificarErros, ClienteController.put);
+router.patch('/:id', validatorClientes, verificarErros, ClienteController.patch);
+router.delete('/:id', ClienteController.delete);
 
 export default router;

@@ -11,3 +11,5 @@ export const verificarErros = (req, res, next) => {
     }
     next();
 };
+
+export default verificarErros;

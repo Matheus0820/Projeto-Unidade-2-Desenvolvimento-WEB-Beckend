@@ -4,7 +4,7 @@ import {
     buscarUsuariosID, putUsuarios,
     patchUsuarios, deletarUsuarios
 } from '../controllers/usuarios.controller.js';
-import { validatorUsuarios } from '../validators/usuarios.validator.js';
+import validatorUsuarios from '../validators/usuarios.validator.js';
 
 const router = Router();
 

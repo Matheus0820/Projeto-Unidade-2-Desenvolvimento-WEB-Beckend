@@ -3,8 +3,8 @@ import {
     listarFrota, criarFrota,
     buscarFrotaID, putFrota,
     patchFrota, deletarFrota
-} from '../controllers/controllerFrotas.js';
-import { validatorFrota } from '../validators/frota.entidades.js';
+} from '../controllers/frota.controller.js';
+import validatorFrota from '../validators/frota.entidades.js';
 
 const router = Router();
 

@@ -1,32 +1,77 @@
-// Importando Dados
-import db from '../config/database.js';
+// Importando Service
+import ClienteService from '../services/clientes.service.js'
 
-// Listar clientes
-export const listarClientes = (req, res) => {
-    res.status(200).json(db.data.clientes)
-};
+class ClienteController {
+    static async findAll(req, res, next) {
+        try {
+            const clientesDto = await ClienteService.findAll()
 
-// Criar Clientes
-export const criarClientes = async (req, res) => {
-    return;
-};
+            res.status(200).json(clientesDto)
 
-// Buscar Clientes por ID
-export const buscarClientesID = (req, res) => {
-    return;
-};
+        } catch(error) {
+            next(error);
+        }
+    }
 
-// PUT Clientes - Modificar todos os dados de um clientes
-export const putClientes = async (req, res) => {
-    return;
-};
+    static async findById(req, res, next) {
+        try {
+            const id = req.params;
+            const clienteDto = await ClienteService.findById(id)
 
-// PATCH Clientes - Modificar pelo menos um dados do clientes
-export const patchClientes = async (req, res) => {
-    return;
-};
+            res.status(200).json(clienteDto)
 
-// Remover Clientes
-export const deletarClientes = async (req, res) => {
-    return;
-};
+        } catch(error) {
+            next(error);
+        }
+    }
+
+    static async create(req, res, next) {
+        try {
+            const clienteData = req.body;
+            const newClienteDto = await ClienteService.create(clienteData);
+
+            res.status(201).json(newClienteDto);
+
+        } catch(error) {
+            next(error);
+        }
+    }
+
+    static async put(req, res, next) {
+        try {
+            const clienteData = req.body;
+            const putClienteDto = await ClienteService.put(clienteData);
+
+            res.status(200).json(putClienteDto);
+
+        } catch(error) {
+            next(error);
+        }
+    }
+
+    static async patch(req, res, next) {
+        try {
+            const clienteData = req.body;
+            const patchClienteDto = await ClienteService.patch(clienteData);
+
+            res.status(200).json(patchClienteDto);
+
+        } catch(error) {
+            next(error);
+        }
+    }
+
+    static async delete(req, res, next) {
+        try {
+            const id = req.params;
+            const deleteClienteDto = ClienteService.delete(id);
+
+            res.status(200).json(deleteClienteDto);
+
+        } catch(error) {
+            next(error);
+        }
+    }
+}
+
+export default ClienteController;

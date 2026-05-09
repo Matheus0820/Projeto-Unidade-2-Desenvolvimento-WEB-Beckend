@@ -4,7 +4,7 @@ import {
     buscarColaboradorID, putColaborador,
     patchColaborador, deletarColaborador
 } from '../controllers/colaboradores.controller.js';
-import { validatorColaborador } from '../validators/colaborador.validator.js'
+import validatorColaborador from '../validators/colaborador.validator.js'
 
 const router = Router();
 

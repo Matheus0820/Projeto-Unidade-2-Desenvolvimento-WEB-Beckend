@@ -8,7 +8,7 @@ const defaultData = {
     usuarios: []
 }
 
-const adapter = new JSONFile('../data/db.json');
+const adapter = new JSONFile('db.json');
 const db = new Low(adapter, defaultData);
 await db.read();
 

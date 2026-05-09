@@ -1,0 +1,13 @@
+{
+  "colaboradores": [],
+  "frota": [],
+  "clientes": [
+    {
+      "id": "deb79176-727e-486a-951a-6552bf7df632",
+      "nome": "José",
+      "tipoServico": "Instalação",
+      "urlMaps": "https://maps.app.goo.gl/U5qHXzbL9YicqC2dA"
+    }
+  ],
+  "usuarios": []
+}
