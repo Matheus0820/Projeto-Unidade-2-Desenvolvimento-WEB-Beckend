@@ -12,7 +12,10 @@ class UsuarioService {
         const usuario = await UsuarioRepository.findById(id);
 
         if (!usuario) {
-            return new Error('Usuário com ID informado não existe.');
+            throw Object.assign(
+                new Error('Usuário com ID informado não existe.'),
+                { statusCode: 404 }
+            );
         }
 
         return new UsuarioDto(usuario);
@@ -27,7 +30,10 @@ class UsuarioService {
         const usuarioSalvo = await UsuarioRepository.findById(id);
 
         if (!usuarioSalvo) {
-            return new Error('Usuário com ID informado não existe.');
+            throw Object.assign(
+                new Error('Usuário com ID informado não existe.'),
+                { statusCode: 404 }
+            );
         }
 
         const usuarioUpdateDb = await UsuarioRepository.update({
@@ -43,7 +49,10 @@ class UsuarioService {
         const usuarioSalvo = await UsuarioRepository.findById(id);
 
         if (!usuarioSalvo) {
-            return new Error('Usuário com ID informado não existe.');
+            throw Object.assign(
+                new Error('Usuário com ID informado não existe.'),
+                { statusCode: 404 }
+            );
         }
 
         const dadosAtualizados = {
@@ -61,7 +70,10 @@ class UsuarioService {
         const usuarioSalvo = await UsuarioRepository.findById(id);
 
         if (!usuarioSalvo) {
-            return new Error('Usuário com ID informado não existe.');
+            throw Object.assign(
+                new Error('Usuário com ID informado não existe.'),
+                { statusCode: 404 }
+            );
         }
 
         const usuarioRemovido = await UsuarioRepository.delete(id);

@@ -15,7 +15,10 @@ class ColaboradorService {
         const colaborador = await ColaboradorRepository.findById(id);
 
         if (!colaborador) {
-            return new Error('Colaborador com ID informado não existe.');
+            throw Object.assign(
+                new Error('Colaborador com ID informado não existe.'),
+                { statusCode: 404 }
+            );
         }
 
         return new ColaboradorDto(colaborador);
@@ -65,7 +68,10 @@ class ColaboradorService {
         const colaboradorSalvo = await ColaboradorRepository.findById(id);
 
         if (!colaboradorSalvo) {
-            return new Error('Colaborador com ID informado não existe.');
+            throw Object.assign(
+                new Error('Colaborador com ID informado não existe.'),
+                { statusCode: 404 }
+            );
         }
 
         const calculado = this.calcularDados(colaboradorData);
@@ -88,7 +94,10 @@ class ColaboradorService {
         const colaboradorSalvo = await ColaboradorRepository.findById(id);
 
         if (!colaboradorSalvo) {
-            return new Error('Colaborador com ID informado não existe.');
+            throw Object.assign(
+                new Error('Colaborador com ID informado não existe.'),
+                { statusCode: 404 }
+            );
         }
 
         const mergedData = {
@@ -119,7 +128,10 @@ class ColaboradorService {
         const colaboradorDelete = await ColaboradorRepository.findById(id);
 
         if (!colaboradorDelete) {
-            return new Error('Colaborador com ID informado não existe.');
+            throw Object.assign(
+                new Error('Colaborador com ID informado não existe.'),
+                { statusCode: 404 }
+            );
         }
 
         await ColaboradorRepository.delete(id);

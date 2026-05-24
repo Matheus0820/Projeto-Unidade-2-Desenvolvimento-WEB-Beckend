@@ -2,6 +2,8 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+import { globalErrorHandler } from './middlewares/error.middleware.js';
+
 import routesColaboradores from './routes/colaboradores.routes.js';
 import routesFrota from './routes/frota.routes.js';
 import routesClientes from './routes/clientes.routes.js';
@@ -26,5 +28,7 @@ app.use('/', routesWeb);
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
+
+app.use(globalErrorHandler);
 
 export default app;
